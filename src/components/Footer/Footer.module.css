@@ -1,0 +1,17 @@
+.footer_wrapper {
+    width: 100vw;
+    height: 86px;
+    padding: 24px 32px;
+    background: #333333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer_elem {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+    cursor: pointer;
+}

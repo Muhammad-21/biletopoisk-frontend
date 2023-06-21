@@ -1,0 +1,43 @@
+.header_wrapper {
+    width: 100vw;
+    height: 84px;
+    padding: 24px 32px;
+    background: #333333;
+    position: fixed;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.herder_title {
+    color: #FFFFFF;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.header_cart {
+    display: flex;
+    gap: 10px;
+}
+
+.header_cart__icon {
+    cursor: pointer;
+}
+
+.header_cart__count__wrap {
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    background: #FF5500;
+    border-radius: 8px;
+}
+
+.header_cart__count__title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+}

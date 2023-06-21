@@ -1,0 +1,64 @@
+.filmCard_wrapper{
+    height: 168px;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+}
+
+.filmCard_promo__info {
+    display: flex;
+    gap: 24px;
+}
+
+.filmCard_promo__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: #1B1F23;
+}
+
+.filmCard_promo__subtitle {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #1B1F23;
+}
+
+.filmCard_counter {
+    display: flex;
+    gap: 8px;
+}
+
+.filmCard_button_disabled {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: #FFA375;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: not-allowed;
+}
+
+.filmCard_button_active {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: #FF5500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filmCard_counter__num {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+}

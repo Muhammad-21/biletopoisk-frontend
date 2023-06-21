@@ -1,0 +1,28 @@
+.filters_wrapper {
+    width: 408px;
+    height: calc(100vh - 218px);
+    overflow-y: auto;
+    background: #FFFFFF;
+    padding: 24px;
+    position: sticky;
+    top: 108px;
+}
+
+.filter_title {
+    font-weight: 600;
+    color: #1B1F23;
+    margin-bottom: 20px;
+    line-height: 20px;
+}
+
+.filter_items__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.filter_item__title {
+    margin-bottom: 4px;
+    font-size: 14px;
+    line-height: 20px;
+}
