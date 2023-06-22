@@ -7,6 +7,7 @@
     display: flex;
     gap: 24px;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .filmCard_promo__info {
@@ -61,4 +62,11 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 20px;
+}
+
+.film_delete {
+    display: flex;
+    height: 20px;
+    margin-left: 20px;
+    align-items: center;
 }

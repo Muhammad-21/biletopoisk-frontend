@@ -1,0 +1,7 @@
+.main_wrapper {
+    width: 100vw;
+    margin-top: 84px;
+    padding: 24px 32px;
+    display: flex;
+    gap: 23px;
+}

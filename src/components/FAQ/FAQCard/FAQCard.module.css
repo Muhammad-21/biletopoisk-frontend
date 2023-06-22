@@ -1,0 +1,26 @@
+.faqCard__wrapper { 
+    flex: 1;
+    min-height: 80px;
+    padding: 24px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.faqCard_question__wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.faqCard_question {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.faqCard_answer {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 16px;
+}

@@ -1,0 +1,13 @@
+.about_wrapper {
+    width: 100vw;
+    height: calc(100% - 170px);
+    padding: 24px 32px;
+    margin-top: 84px;
+}
+
+.about_info {
+    flex: 1;
+    padding: 24px;
+    background: #FFFFFF;
+    border-radius: 8px;
+}

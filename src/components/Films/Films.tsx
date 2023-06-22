@@ -1,4 +1,4 @@
-import FilmCard from '../FilmCard/FilmCard';
+import FilmCard from './FilmCard/FilmCard';
 import styles from './Films.module.css'
 
 function Films() {

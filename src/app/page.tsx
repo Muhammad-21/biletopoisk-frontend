@@ -1,9 +1,12 @@
-import Main from "@/components/Main/Main";
+import Films from "@/components/Films/Films";
+import Filters from "@/components/Filters/Filters";
+import styles from './page.module.css'
 
 export default function Home() {
   return (
-      <>
-        <Main/>
-      </>
+    <div className={styles.main_wrapper}>
+      <Filters/>
+      <Films/>
+    </div>
     )
 }

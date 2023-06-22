@@ -1,0 +1,6 @@
+.faq_wrapper {
+    width: 100vw;
+    height: calc(100% - 170px);
+    padding: 24px 32px;
+    margin-top: 84px;
+}
