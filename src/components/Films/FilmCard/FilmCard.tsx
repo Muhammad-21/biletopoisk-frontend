@@ -8,39 +8,52 @@ import DeleteIcon from './assets/Delete.svg'
 import { usePathname, useRouter } from 'next/navigation';
 import { changeRoute } from '@/utils/router';
 import React from 'react';
+import { FilmAttributes } from '@/components/types';
+import { translateGenre } from '@/utils/helpers';
+import { useDispatch } from 'react-redux';
+import { decrement, deleteItem, increment } from '@/redux/slices/cart';
 
-function FilmCard() {
+interface FilmCardProps {
+    film: FilmAttributes
+}
+
+const FilmCard:React.FC<FilmCardProps> = ({film}) => {
     const router = useRouter()
     const [count, setCount] = React.useState<number>(0)
     const pathname = usePathname()
+    const genreRU = translateGenre(film.genre)
+    const dispatch = useDispatch()
 
-    const handlePlusClick = (e: React.MouseEvent<HTMLElement>) => {
-        e.stopPropagation()
-        count < 30 && setCount(prev => prev + 1)  
-    }
+    const handlePlusClick = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
+        if(count < 30){
+            setCount(prev => prev + 1)  
+            dispatch(increment(film.id))
+        }
+    }, [count, dispatch, film])
 
-    const handleMinusClick = (e: React.MouseEvent<HTMLElement>) => {
-        e.stopPropagation()
-        count >= 1 && setCount(prev => prev - 1) 
-    }
+    const handleMinusClick = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
+        if(count >= 1){
+            setCount(prev => prev - 1) 
+            dispatch(decrement(film.id))
+        }
+    },[count, dispatch, film])
 
-    const handleDelete = (e: React.MouseEvent<HTMLElement>) => {
-        e.stopPropagation()
-        console.log('delete')
-    }
+    const handleDelete = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
+        dispatch(deleteItem(film.id))
+    },[dispatch, film])
 
     return ( 
-        <div className={styles.filmCard_wrapper} onClick={() => changeRoute(`/film/${1}`, router)}>
-            <div className={styles.filmCard_promo__info}>
+        <div className={styles.filmCard_wrapper}>
+            <div className={styles.filmCard_promo__info} onClick={() => changeRoute(`/film/${1}`, router)}>
                 <Image
-                    src='https://i.postimg.cc/pdCLNMqX/1.webp'
+                    src={film.posterUrl}
                     alt='обложка'
                     width={100}
                     height={120}
                 />
                 <div>
-                    <div className={styles.filmCard_promo__title}>Властелин колец: Братство кольца</div>
-                    <div className={styles.filmCard_promo__subtitle}>Фэнтези</div>
+                    <div className={styles.filmCard_promo__title}>{film.title}</div>
+                    <div className={styles.filmCard_promo__subtitle}>{genreRU}</div>
                 </div>
             </div>
             <div className={styles.filmCard_counter}>

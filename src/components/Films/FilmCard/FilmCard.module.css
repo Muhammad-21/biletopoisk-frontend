@@ -7,12 +7,12 @@
     display: flex;
     gap: 24px;
     justify-content: space-between;
-    cursor: pointer;
 }
 
 .filmCard_promo__info {
     display: flex;
     gap: 24px;
+    cursor: pointer;
 }
 
 .filmCard_promo__title {

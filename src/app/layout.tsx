@@ -2,6 +2,7 @@ import './globals.css'
 import { Roboto } from 'next/font/google'
 import Footer from '@/components/Footer/Footer'
 import Header from '@/components/Header/Header'
+import { StoreProvider } from '@/redux/StoreProvider'
 
 const inter = Roboto({ 
   weight: ['400', '500', '700'],
@@ -22,9 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header/>
-          {children}
-        <Footer/>
+        <StoreProvider>
+          <Header/>
+            {children}
+          <Footer/>
+        </StoreProvider>
       </body>
     </html>
   )

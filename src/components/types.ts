@@ -5,3 +5,21 @@ export interface FAQCardProps {
     question: string;
     answer: string;
 }
+
+export interface CinemaAttributes {
+    id: string,
+    name: string,
+    movieIds: string[],
+}
+
+export interface FilmAttributes {
+    title: string,
+    posterUrl: string,
+    releaseYear: number,
+    description: string,
+    genre: string,
+    id: string,
+    rating: number,
+    director: string,
+    reviewIds: string[],
+}
