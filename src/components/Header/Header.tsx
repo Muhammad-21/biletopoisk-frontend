@@ -13,15 +13,10 @@ function Header() {
     const router = useRouter()
     const pathname = usePathname()
     const count = useSelector(selectTotalItemCount)
-    const headerClick = React.useCallback(() => {
-        if(pathname !== '/'){
-            changeRoute('/', router)
-        }
-    },[pathname, router])
 
     return ( 
         <div className={styles.header_wrapper}>
-            <h1 className={styles.herder_title} onClick={headerClick}>Билетопоиск</h1>
+            <h1 className={styles.herder_title} onClick={() => changeRoute('/', router, pathname)}>Билетопоиск</h1>
             <div className={styles.header_cart}>
                 <div className={styles.header_cart__count__wrap}>
                     <div className={styles.header_cart__count__title}>{count}</div>
@@ -30,7 +25,7 @@ function Header() {
                     src={CartIcon} 
                     alt="Корзина"
                     className={styles.header_cart__icon}
-                    onClick={() => changeRoute('/cart', router)}
+                    onClick={() => changeRoute('/cart', router, pathname)}
                 />
             </div>
         </div>

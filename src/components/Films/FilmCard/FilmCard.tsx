@@ -10,8 +10,9 @@ import { changeRoute } from '@/utils/router';
 import React from 'react';
 import { FilmAttributes } from '@/components/types';
 import { translateGenre } from '@/utils/helpers';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { decrement, deleteItem, increment } from '@/redux/slices/cart';
+import { RootState } from '@/redux/store';
 
 interface FilmCardProps {
     film: FilmAttributes
@@ -19,32 +20,33 @@ interface FilmCardProps {
 
 const FilmCard:React.FC<FilmCardProps> = ({film}) => {
     const router = useRouter()
-    const [count, setCount] = React.useState<number>(0)
+    const count = useSelector((state: RootState) => {
+        return state.cart[Object.keys(state.cart).filter(obj => obj === JSON.stringify(film))[0]] || 0
+    })
+
     const pathname = usePathname()
     const genreRU = translateGenre(film.genre)
     const dispatch = useDispatch()
 
     const handlePlusClick = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
         if(count < 30){
-            setCount(prev => prev + 1)  
-            dispatch(increment(film.id))
+            dispatch(increment(JSON.stringify(film)))
         }
     }, [count, dispatch, film])
 
     const handleMinusClick = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
         if(count >= 1){
-            setCount(prev => prev - 1) 
-            dispatch(decrement(film.id))
+            dispatch(decrement(JSON.stringify((film))))
         }
     },[count, dispatch, film])
 
     const handleDelete = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
-        dispatch(deleteItem(film.id))
+        dispatch(deleteItem(JSON.stringify((film))))
     },[dispatch, film])
 
     return ( 
         <div className={styles.filmCard_wrapper}>
-            <div className={styles.filmCard_promo__info} onClick={() => changeRoute(`/film/${1}`, router)}>
+            <div className={styles.filmCard_promo__info} onClick={() => changeRoute(`/film/${1}`, router, pathname)}>
                 <Image
                     src={film.posterUrl}
                     alt='обложка'
