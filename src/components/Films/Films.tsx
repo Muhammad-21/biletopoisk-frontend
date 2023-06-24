@@ -14,6 +14,8 @@ export const Films:React.FC = () => {
     const {data, loading} = useSelector((state: RootState) => state.films)
     const { genre, cinemaId, searchText } = useSelector((state: RootState) => state.filter)
 
+    console.log(data)
+
     React.useEffect(() => {
         dispatch(fetchInitialData({cinemaId, genre, searchText}))
     }, [dispatch, cinemaId, genre, searchText])

@@ -23,3 +23,10 @@ export interface FilmAttributes {
     director: string,
     reviewIds: string[],
 }
+
+export interface ReviewAttributes {
+    id: string;
+    name: string;
+    text: string;
+    rating: string;
+}

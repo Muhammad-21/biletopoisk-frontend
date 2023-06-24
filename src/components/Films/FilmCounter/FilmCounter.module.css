@@ -1,0 +1,41 @@
+.filmCard_counter {
+    display: flex;
+    gap: 8px;
+}
+
+.filmCard_button_disabled {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: #FFA375;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: not-allowed;
+}
+
+.filmCard_button_active {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: #FF5500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filmCard_counter__num {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.film_delete {
+    display: flex;
+    height: 20px;
+    margin-left: 20px;
+    align-items: center;
+    cursor: pointer;
+}

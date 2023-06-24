@@ -1,6 +1,8 @@
 .film_wrapper {
     width: 100vw;
-    height: calc(100% - 170px);
+    /* height: calc(100% - 170px); */
     padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
     margin-top: 84px;
 }
