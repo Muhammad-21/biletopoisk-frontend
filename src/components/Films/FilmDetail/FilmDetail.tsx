@@ -3,12 +3,12 @@
 import Image from 'next/image';
 import styles from './FilmDetail.module.css'
 import React, { useEffect, useState } from 'react';
-import { getFilm } from '@/api/CinemasService';
 import { FilmAttributes } from '@/components/types';
 import { usePathname } from 'next/navigation';
 import FilmCounter from '../FilmCounter/FilmCounter';
 import { translateGenre } from '@/utils/helpers';
 import Reviews from './Reviews/Reviews';
+import { getRequest } from '@/api/common.api';
 
 const FilmDetail = () => {
     const pathname = usePathname();
@@ -18,7 +18,7 @@ const FilmDetail = () => {
     const id = pathnameSplited[pathnameSplited.length - 1]
 
     useEffect(() => {
-        getFilm(id).then((data) => setFilm(data))
+        getRequest<FilmAttributes>(`/movie?movieId=${id}`).then((data) => setFilm(data))
     }, [id])
 
     if (film) {
