@@ -1,11 +1,15 @@
-import styles from './page.module.css'
+'use client'
 
-function FIlmPage() {
+import styles from './page.module.css'
+import FilmDetail from '@/components/Films/FilmDetail/FilmDetail';
+
+function FilmPage() {
     return (  
         <div className={styles.film_wrapper}>
-            FIlmPage
+            <FilmDetail />
+            {/* <FilmReviews /> */}
         </div>
     );
 }
 
-export default FIlmPage;
+export default FilmPage;
