@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface CartState {
+interface FilterState {
     genre: string;
     cinemaId: string;
     searchText: string;
 }
 
-const initialState: CartState = {
+const initialState: FilterState = {
     genre: '',
     cinemaId: '',
     searchText: ''
 }
 
-const filterCInemaSlice = createSlice({
+const filterFilmsSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
@@ -30,6 +30,6 @@ const filterCInemaSlice = createSlice({
 })
 
 
-export const { changeCinema, changeGenre, changeSearchText, reset } = filterCInemaSlice.actions
+export const { changeCinema, changeGenre, changeSearchText, reset } = filterFilmsSlice.actions
 
-export const filterReducer = filterCInemaSlice.reducer
+export const filterReducer = filterFilmsSlice.reducer

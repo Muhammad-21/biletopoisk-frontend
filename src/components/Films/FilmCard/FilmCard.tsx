@@ -26,7 +26,7 @@ const FilmCard:React.FC<FilmCardProps> = ({film}) => {
 
     return ( 
         <div className={styles.filmCard_wrapper}>
-            <div className={styles.filmCard_promo__info} onClick={() => changeRoute(`/film/${film.id}`, router, pathname)}>
+            <div className={styles.filmCard_promo__info}>
                 <Image
                     src={film.posterUrl}
                     alt='обложка'
@@ -34,7 +34,10 @@ const FilmCard:React.FC<FilmCardProps> = ({film}) => {
                     height={120}
                 />
                 <div>
-                    <div className={styles.filmCard_promo__title}>{film.title}</div>
+                    <div className={styles.filmCard_promo__title} 
+                        onClick={() => changeRoute(`/film/${film.id}`, router, pathname)}>
+                        {film.title}
+                    </div>
                     <div className={styles.filmCard_promo__subtitle}>{genreRU}</div>
                 </div>
             </div>

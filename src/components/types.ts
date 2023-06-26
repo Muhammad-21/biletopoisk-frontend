@@ -30,3 +30,8 @@ export interface ReviewAttributes {
     text: string;
     rating: string;
 }
+
+export interface SelectOption {
+    name: string; 
+    id: string; 
+}

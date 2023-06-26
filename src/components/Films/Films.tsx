@@ -1,34 +1,41 @@
 'use client'
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FilmCard from './FilmCard/FilmCard';
 import styles from './Films.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@/redux/store';
-import { fetchInitialData } from '@/redux/slices/films';
+import { useGetMoviesQuery } from '@/redux/services/films/films';
+import { FilmAttributes } from '../types';
+import useDebounce from '@/utils/useDebounce';
 
 
 
 export const Films:React.FC = () => {
-    const dispatch = useDispatch<AppDispatch>()
-    const {data, loading} = useSelector((state: RootState) => state.films)
     const { genre, cinemaId, searchText } = useSelector((state: RootState) => state.filter)
+    const debouncedSearchText = useDebounce(searchText, 500)
 
-    console.log(data)
+    const {data, isLoading, error} = useGetMoviesQuery(cinemaId);
+    const [films, setFilms] = useState<FilmAttributes[] | null>(null);
 
-    React.useEffect(() => {
-        dispatch(fetchInitialData({cinemaId, genre, searchText}))
-    }, [dispatch, cinemaId, genre, searchText])
+    useEffect(() => {
+        if(data) {
+            setFilms(data.filter(film => {
+                return (!genre || film.genre === genre) && 
+                (!debouncedSearchText || film.title.toLowerCase().includes(debouncedSearchText.toLowerCase()))
+            }))
+        }
+    }, [data, genre, debouncedSearchText])
 
-    if(loading){
+    if(isLoading){
         return ( 
             <div>
-                Loading
+                Loading...
             </div>
         );
     }
 
-    if(data.length === 0){
+    if(films?.length === 0){
         return (
             <div className={styles.films_wrapper}>
                 Ничего не нашлось :(
@@ -38,7 +45,7 @@ export const Films:React.FC = () => {
 
     return ( 
         <div className={styles.films_wrapper}>
-            {data.map(film => <FilmCard film={film} key={film.id}/>)}
+            {films?.map(film => <FilmCard film={film} key={film.id}/>)}
         </div>
     );
 }

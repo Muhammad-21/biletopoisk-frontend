@@ -18,25 +18,25 @@ interface FilmCounterProps {
 
 const FilmCounter: React.FC<FilmCounterProps> = ({ film, pathname }) => {
     const count = useSelector((state: RootState) => {
-        return state.cart[Object.keys(state.cart).filter(obj => obj === JSON.stringify(film))[0]] || 0
+        return state.cart[film.id] || 0
     })
 
     const dispatch = useDispatch()
 
     const handlePlusClick = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
         if(count < 30){
-            dispatch(increment(JSON.stringify(film)))
+            dispatch(increment(film.id))
         }
     }, [count, dispatch, film])
 
     const handleMinusClick = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
         if(count >= 1){
-            dispatch(decrement(JSON.stringify((film))))
+            dispatch(decrement(film.id))
         }
     },[count, dispatch, film])
 
     const handleDelete = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
-        dispatch(deleteItem(JSON.stringify((film))))
+        dispatch(deleteItem(film.id))
     },[dispatch, film])
 
 

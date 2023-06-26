@@ -12,7 +12,6 @@
 .filmCard_promo__info {
     display: flex;
     gap: 24px;
-    cursor: pointer;
 }
 
 .filmCard_promo__title {
@@ -20,6 +19,7 @@
     font-size: 20px;
     line-height: 20px;
     color: #1B1F23;
+    cursor: pointer;
 }
 
 .filmCard_promo__subtitle {
