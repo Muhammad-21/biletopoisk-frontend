@@ -5,11 +5,12 @@ import styles from './FilmCounter.module.css'
 import MinusIcon from './assets/Minus.svg'
 import PlusIcon from './assets/Plus.svg'
 import DeleteIcon from './assets/Delete.svg'
-import React from 'react';
+import React, { useState } from 'react';
 import { FilmAttributes } from '@/components/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrement, deleteItem, increment } from '@/redux/slices/cart';
 import { RootState } from '@/redux/store';
+import { Modal } from '@/components/Modal/Modal';
 
 interface FilmCounterProps {
     film: FilmAttributes;
@@ -22,6 +23,7 @@ const FilmCounter: React.FC<FilmCounterProps> = ({ film, pathname }) => {
     })
 
     const dispatch = useDispatch()
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     const handlePlusClick = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
         if(count < 30){
@@ -31,13 +33,17 @@ const FilmCounter: React.FC<FilmCounterProps> = ({ film, pathname }) => {
 
     const handleMinusClick = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
         if(count >= 1){
-            dispatch(decrement(film.id))
+            if(pathname === '/cart' && count === 1 ){
+                setIsModalOpen(true)
+            } else {
+                dispatch(decrement(film.id))
+            }
         }
-    },[count, dispatch, film])
+    }, [count, dispatch, film, pathname])
 
     const handleDelete = React.useCallback((e: React.MouseEvent<HTMLElement>) => {
-        dispatch(deleteItem(film.id))
-    },[dispatch, film])
+        setIsModalOpen(true)
+    }, [])
 
 
     return ( 
@@ -63,6 +69,7 @@ const FilmCounter: React.FC<FilmCounterProps> = ({ film, pathname }) => {
                         alt='Delete Icon'
                     />
                 </div>}
+                {isModalOpen && <Modal filmId={film.id} onClose={() => setIsModalOpen(false)} />}
             </div>
     );
 }
