@@ -3,6 +3,7 @@
 import styles from './ReviewCard.module.css'
 import { ReviewAttributes } from '@/components/types';
 import Image from 'next/image';
+import reviewImg from './assets/review-img.png'
 
 interface ReviewCardProps {
     review: ReviewAttributes;
@@ -11,7 +12,7 @@ interface ReviewCardProps {
 const Reviews: React.FC<ReviewCardProps> = ({ review }) => {
     return <div className={styles.review_card}>
         <div className={styles.review_card__image}>
-            <Image src={''} width={100} height={100} alt='reviewImage'/>
+            <Image src={reviewImg} width={100} height={100} alt='reviewImage'/>
         </div>
         <div className={styles.review_card__info}>
             <div className={styles.review_card__info__header}>

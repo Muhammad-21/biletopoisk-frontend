@@ -20,7 +20,7 @@ function Cart() {
         Promise.all(filmsIds.map(filmId => getRequest<FilmAttributes>(`/movie?movieId=${filmId}`)))
             .then(data => setCartFilms(data))
             .finally(() => setIsLoading(false))
-    }, [])
+    }, [filmsIds])
 
     useEffect(() => {
         setCartFilms(prev => prev.filter(film => cart[film.id]))
